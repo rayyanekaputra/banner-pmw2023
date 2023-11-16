@@ -11,6 +11,8 @@ export default function Diary() {
 
   async function getDiary() {
     const res = await axios.get(endpointAPI);
+
+    //ambil data
     const data = res.data;
 
     //ambil judul
@@ -26,12 +28,13 @@ export default function Diary() {
     getDiary();
   }, []);
 
+  
   return (
     <div>
       {judul.length > 0 ? (
         <ul>
           {judul.map((item, idx) => (
-              <li>
+              <li key={idx}>
                 <div className="diary-container">
                     <h1>{judul[idx]}</h1>
                     <p className="p-diary">{isiDiary[idx]}</p>
