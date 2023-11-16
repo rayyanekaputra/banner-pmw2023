@@ -1,25 +1,32 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import Image from 'next/image'
-import './globals.css'
+import { useState } from "react";
+import Image from "next/image";
+import "@styles/home.css";
 
 export default function Home() {
+  const [isSimpan, setSimpan] = useState("");
+  const [nama, setNama] = useState("Rayyan Eka Putra");
 
-  const [bravo, setBravo] = useState(0)
-  const [nama, setNama] = useState('Rayyan Eka Putra')
-
-  function handlerTambahBravo(){
-    setBravo(bravo + 1)
+  function handlerInputNama(event) {
+    // Prevent the browser from reloading the page
+    event.preventDefault();
+    setSimpan(event.target.value);
+  }
+  function handlerSubmit(event) {
+    // Prevent the browser from reloading the page
+    setNama(isSimpan);
+  }
+  function handlerKeyEnter(e){
+    e.preventDefault
+    if (e.key === 'Enter'){
+      setSimpan(e.target.value)
+      setNama(isSimpan);
+    }
   }
 
-  function handlerGantiNama(){
-    setNama('Expresidentz')
-  }
-  
-  
   return (
-    <div className='body'>
+    <>
       <div className="banner-container">
         {/* Kartunya */}
         <div className="header-banner-wrapper">
@@ -30,34 +37,33 @@ export default function Home() {
               src="/assets/profil.png"
               alt="Picture of the author"
               fill
-              objectFit='contain'
+              objectFit="contain"
             />
           </div>
           <div className="content-header-banner">
             {/* Nama dan Kawan2*/}
             <h1>{nama}</h1>
             <div className="bio-nim-header-banner">
-            {/* NIM dan BIO*/}
-            <p>D121191074</p>
-            <p>Bravo {bravo}, going dark</p>
+              {/* NIM dan BIO*/}
+              <p>D121191074</p>
+              <p>Bravo 6, going dark</p>
             </div>
           </div>
         </div>
         <div className="cta-banner-wrapper">
           {/* Tombol CTA */}
-            <div className='cta-button' onClick={handlerTambahBravo}>
-              <p>Halo!</p>
-            </div>
-            <div className='cta-button' 
-            style={{
-              marginTop: '12px'
-            }}
-            
-            onClick={handlerGantiNama}>
-              <p>Ganti Nama</p>
-            </div>
+          <input
+            name="input-nama"
+            type="text"
+            placeholder="Tuliskan namamu.."
+            onChange={handlerInputNama}
+            onKeyDown={handlerKeyEnter}
+          />
+          <div className="cta-button" onClick={handlerSubmit}>
+            <p>Halo!</p>
+          </div>
         </div>
       </div>
-    </div>
-  )
+    </>
+  );
 }
