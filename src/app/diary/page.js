@@ -14,6 +14,7 @@ export default function Diary() {
 
     //ambil data
     const data = res.data;
+    console.log('Component is mounting or updating');
 
     //ambil judul
     const judul = data.map((item) => item.judul);
@@ -22,12 +23,17 @@ export default function Diary() {
     //ambil isi_diary
     const isi_diary = data.map((item) => item.isi_diary);
     setIsiDiary(isi_diary);
+
   }
-
-  useEffect(() => {
+  
+  /*
+  react strict mode khusus di dev selalu merender 2x
+  untuk mengecek adanya unintended sideeffect
+  https://www.youtube.com/shorts/BNaPTkadnao
+  */ 
+  useEffect(()=>{
     getDiary();
-  }, []);
-
+  },[]);
   
   return (
     <div>
