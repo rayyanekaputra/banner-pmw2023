@@ -17,9 +17,9 @@ export default function Home() {
     // Prevent the browser from reloading the page
     setNama(isSimpan);
   }
-  function handlerKeyEnter(e){
+  function handlerKeyEnter(e) {
     e.preventDefault
-    if (e.key === 'Enter'){
+    if (e.key === 'Enter') {
       setSimpan(e.target.value)
       setNama(isSimpan);
     }
@@ -59,9 +59,12 @@ export default function Home() {
             onChange={handlerInputNama}
             onKeyDown={handlerKeyEnter}
           />
-          <div className="cta-button" onClick={handlerSubmit}>
-            <p>Halo!</p>
-          </div>
+          {isSimpan ? (<div className="cta-button" onClick={handlerSubmit}>
+            <p>Submit Nama</p>
+          </div>) : (<div className="cta-button disabled" onClick={()=>alert('Isi terlebih dahulu!')}>
+            <p>Disabled</p>
+          </div>)}
+
         </div>
       </div>
     </>
