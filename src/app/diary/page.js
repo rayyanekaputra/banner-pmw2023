@@ -48,13 +48,15 @@ export default function Diary() {
       {isData ? (judul.length > 0 ? (
         <ul>
           {judul.map((item, idx) => (
-            <Link href={`/diary/${encodeURIComponent(item)}/${encodeURIComponent(isiDiary[idx])}`}>
+            <Link href={`/diary/${item}/${isiDiary[idx]}`}>
+            
             <li key={idx}>           
               <div className={`diary-container ${idx === judul.length - 1? 'last-item' :''}`}>
                 <h1>{judul[idx]}</h1>
                 <p className="p-diary">{isiDiary[idx]}</p>
               </div>
             </li>
+            
             </Link>
           ))}
         </ul>
