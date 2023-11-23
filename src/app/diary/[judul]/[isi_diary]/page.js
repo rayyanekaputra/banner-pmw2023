@@ -10,6 +10,7 @@ export default function DiaryPosts({params}) {
     <div className="diary-post-container">
         <h1>{decodeURIComponent(judul)}</h1>
         <p>{decodeURIComponent(isi_diary)}</p>
+        <p>halo</p>
     
     </div>
     )
