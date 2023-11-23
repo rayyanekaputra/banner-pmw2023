@@ -11,8 +11,6 @@ export default function Diary() {
 
   const endpointAPI = "https://6555c0cc84b36e3a431e3e84.mockapi.io/diaryku";
 
-
-  console.log('sebelum isData:', isData);
   async function getDiary() {
     try {
       const res = await axios.get(endpointAPI);
@@ -50,7 +48,7 @@ export default function Diary() {
       {isData ? (judul.length > 0 ? (
         <ul>
           {judul.map((item, idx) => (
-            <Link href={`/diary/${item}`}>
+            <Link href={`/diary/${encodeURIComponent(item)}/${encodeURIComponent(isiDiary[idx])}`}>
             <li key={idx}>           
               <div className={`diary-container ${idx === judul.length - 1? 'last-item' :''}`}>
                 <h1>{judul[idx]}</h1>
