@@ -36,11 +36,9 @@ export default function Diary() {
   //POST
   const [postTulisJudul, setPostTulisJudul] = useState("");
   const [postTulisDiary, setPostTulisDiary] = useState("");
-  const [diary, setDiary] = useState([]);
-
   async function postDiary() {
     /* 
-    isData --> '[]' isinya koleksi diaryku yg di fetch()
+    getKoleksiData --> '[]' isinya koleksi diaryku yg di fetch()
     tulis --> 'str' isinya inputanku yang diketik
 
     ingat karena react itu immutable (tidak bisa diubah) 
